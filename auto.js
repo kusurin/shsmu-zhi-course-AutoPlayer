@@ -54,7 +54,7 @@ async function main() {
             for (k = 0; k < play_buttons.length; k++) {
                 //let time = document.getElementsByClassName("-title")[k].children[0].innerHTML;
                 //let time_ms = Number(time.slice(1, 3)) * 60 * 60 * 1000 + Number(time.slice(4, 6)) * 60 * 1000 + Number(time.slice(7, 9)) * 1000;
-                console.log("trying to play video" + (k + 1) + "/" + play_buttons.length + " in section");
+                console.log("trying to play video " + (k + 1) + "/" + play_buttons.length + " in section");
                 let progress = progress_holder[k].getAttribute("aria-valuenow");
                 if (progress > 95.0) {
                     continue;
@@ -90,7 +90,7 @@ async function main() {
                 console.log("video started");
                 retry_times = 0;
                 retry_times_limit = 6;
-                while (progress_holder[k].getAttribute("aria-valuenow") != progress || progress < 100.0) {
+                while (progress_holder[k].getAttribute("aria-valuenow") != progress || progress < 100.0 || isNaN(progress)) {
                     if (progress_holder[k].getAttribute("aria-valuenow") == progress && progress < 100.0) {
                         console.log("video stopped and unfinished.retrying " + (retry_times + 1) + "/" + retry_times_limit);
                         chaps.children[0].children[2].children[0].click();
