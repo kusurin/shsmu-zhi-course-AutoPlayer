@@ -13,7 +13,9 @@ function rand_range(max, min) {
 var chaps = document.getElementsByClassName('sr-catalog')[0];
 
 Array.from(chaps.children).forEach(element => {
-    element.children[0].click();
+    if (element.classList.contains('hide-status')) {
+        element.children[0].click();
+    }
 });
 
 async function main() {
