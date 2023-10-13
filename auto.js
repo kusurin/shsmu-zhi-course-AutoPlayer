@@ -37,7 +37,7 @@ async function main() {
             await sleep(rand_range(7000, 10000));
             let retry_times = 0;
             let retry_times_limit = 2;
-            while (retry_times < retry_times_limit && document.getElementsByClassName("vjs-control-bar").length != document.getElementsByClassName("-title").length) {
+            while (retry_times < retry_times_limit && document.getElementsByClassName("vjs-control-bar").length != document.getElementsByClassName("sd-icon-new-play").length) {
                 console.log("retrying " + (retry_times + 1) + "/" + retry_times_limit);
                 chaps.children[0].children[2].children[0].click();
                 await sleep(rand_range(1000, 2000));
@@ -54,8 +54,6 @@ async function main() {
             let progress_holder = document.getElementsByClassName("vjs-progress-holder");
 
             for (k = 0; k < play_buttons.length; k++) {
-                //let time = document.getElementsByClassName("-title")[k].children[0].innerHTML;
-                //let time_ms = Number(time.slice(1, 3)) * 60 * 60 * 1000 + Number(time.slice(4, 6)) * 60 * 1000 + Number(time.slice(7, 9)) * 1000;
                 console.log("trying to play video " + (k + 1) + "/" + play_buttons.length + " in section");
                 let progress = progress_holder[k].getAttribute("aria-valuenow");
                 if (progress > 95.0) {
@@ -118,7 +116,6 @@ async function main() {
             }
         }
         section_begin = 2;
-        //chaps.children[i + 1].children[0].click();
     }
 }
 
