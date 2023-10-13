@@ -37,7 +37,7 @@ async function main() {
             await sleep(rand_range(7000, 10000));
             let retry_times = 0;
             let retry_times_limit = 2;
-            while (retry_times < retry_times_limit && (document.getElementsByClassName("vjs-control-bar").length == 0 || document.getElementsByClassName("vjs-control-bar").length != document.getElementsByClassName("vjs-big-play-button").length)) {
+            while (retry_times < retry_times_limit && document.getElementsByClassName("vjs-control-bar").length != document.getElementsByClassName("-title").length) {
                 console.log("retrying " + (retry_times + 1) + "/" + retry_times_limit);
                 chaps.children[0].children[2].children[0].click();
                 await sleep(rand_range(1000, 2000));
