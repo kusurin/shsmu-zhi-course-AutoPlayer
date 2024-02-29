@@ -113,6 +113,8 @@ async function main() {
 
                     progress = progress_holder[k].getAttribute("aria-valuenow");
                     await sleep(rand_range(15000, 20000));
+                    if (document.getElementsByClassName("sure-anwer") != null) console.log("question");
+                    else
                     console.log("video playing");
                 }
             }
