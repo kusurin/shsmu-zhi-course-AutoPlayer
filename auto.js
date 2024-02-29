@@ -90,7 +90,7 @@ async function main() {
                 console.log("video started");
                 retry_times = 0;
                 retry_times_limit = 6;
-                while (progress_holder[k].getAttribute("aria-valuenow") != progress || progress < 100.0 || isNaN(progress)) {
+                while (play_buttons[0] == null || progress_holder[k].getAttribute("aria-valuenow") != progress || progress < 100.0 || isNaN(progress)) {
                     if (progress_holder[k].getAttribute("aria-valuenow") == progress && progress < 100.0) {
                         console.log("video stopped and unfinished.retrying " + (retry_times + 1) + "/" + retry_times_limit);
                         chaps.children[0].children[2].children[0].click();
@@ -100,6 +100,8 @@ async function main() {
 
                         play_buttons = document.getElementsByClassName("vjs-big-play-button");
                         progress_holder = document.getElementsByClassName("vjs-progress-holder");
+
+                        if (play_buttons[0] == null) continue;
 
                         play_buttons[k].click();
                         retry_times++;
