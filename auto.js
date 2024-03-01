@@ -91,7 +91,7 @@ async function main() {
                 retry_times = 0;
                 retry_times_limit = 6;
                 while (play_buttons[0] == null || progress_holder[k].getAttribute("aria-valuenow") != progress || progress < 100.0 || isNaN(progress)) {
-                    if (play_buttons[0] == null || (progress_holder[k].getAttribute("aria-valuenow") == progress && progress < 100.0 && document.getElementsByClassName("sure-anwer") == null)) {
+                    if (play_buttons[0] == null || (progress_holder[k].getAttribute("aria-valuenow") == progress && progress < 100.0 && window.getComputedStyle(document.getElementsByClassName("practice-box")[0]).display == "none")) {
                         console.log("video stopped and unfinished.retrying " + (retry_times + 1) + "/" + retry_times_limit);
                         chaps.children[0].children[2].children[0].click();
                         await sleep(rand_range(1000, 2000));
@@ -113,7 +113,7 @@ async function main() {
 
                     progress = progress_holder[k].getAttribute("aria-valuenow");
                     await sleep(rand_range(15000, 20000));
-                    if (document.getElementsByClassName("sure-anwer") != null) console.log("question");
+                    if (window.getComputedStyle(document.getElementsByClassName("practice-box")[0]).display != "none") console.log("question");
                     else
                     console.log("video playing");
                 }
