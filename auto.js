@@ -92,6 +92,10 @@ async function main() {
                 retry_times_limit = 6;
                 while (play_buttons[0] == null || progress_holder[k].getAttribute("aria-valuenow") != progress || progress < 100.0 || isNaN(progress)) {
                     if (document.getElementsByClassName("video-error")[0] != null || play_buttons[0] == null || (progress_holder[k].getAttribute("aria-valuenow") == progress && progress < 100.0 && Array.from(document.getElementsByClassName("practice-box")).filter(element => window.getComputedStyle(element).display != "none")[0] != undefined)) {
+                        await sleep(rand_range(20000, 30000));
+                        if (!(document.getElementsByClassName("video-error")[0] != null || play_buttons[0] == null || (progress_holder[k].getAttribute("aria-valuenow") == progress && progress < 100.0 && Array.from(document.getElementsByClassName("practice-box")).filter(element => window.getComputedStyle(element).display != "none")[0] == undefined))) {
+                            continue;
+                        }
                         console.log("video stopped and unfinished.retrying " + (retry_times + 1) + "/" + retry_times_limit);
                         chaps.children[0].children[2].children[0].click();
                         await sleep(rand_range(1000, 2000));
